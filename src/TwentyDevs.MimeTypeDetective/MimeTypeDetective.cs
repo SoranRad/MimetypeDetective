@@ -9,11 +9,12 @@ namespace TwentyDevs.MimeTypeDetective
     /// <summary>
     /// A class that contain methos to find and detect miemtype of  a file Path or stream or extention.
     /// </summary>
-    public static class MimeTypeDetective
+    public static class MimeTypeDetection
     {
-        private static int _read;
-        // some file formats have headers offset to 512 bytes
-        private  const int MaxHeaderSize = 570;
+        /// <summary>
+        /// Maximume header size must be read to detect the mimetype.
+        /// </summary>
+        public  const int MaxHeaderSize = 570;
 
         /// <summary>
         /// determine mimetype of the extention.
@@ -32,7 +33,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="mimetype">the mimetype that its information required</param>
         /// <returns>all information of the mimetype </returns>
-        public static MimeTypeInfo GetMimeTypeByMimetype(string mimetype)
+        public static MimeTypeInfo GetMimeTypeinfoByMimetypestring(string mimetype)
         {
             mimetype = MimeTypeInfo.NormalizeMimeType(mimetype);
             return MimeTypes.MimeTypeList.FirstOrDefault(x => x.MimeType == mimetype);
