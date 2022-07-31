@@ -1,9 +1,37 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>1.0.9.0</AssemblyVersion>
-    <FileVersion>1.0.9.0</FileVersion>
+    <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
+    <AssemblyVersion>1.0.18.0</AssemblyVersion>
+    <FileVersion>1.0.18.0</FileVersion>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	 <Company>20Devs.com</Company>
+	 <Copyright>Copyright © Twenty Developers 2022</Copyright>
+	 <Description>A library for .net to detect file mimetype from name, extention and header content(magic number).</Description>
+	 <PackageProjectUrl>https://github.com/20Devs/MimetypeDetective</PackageProjectUrl>
+	 <PackageIcon>Logo.png</PackageIcon>
+	 <PackageReadmeFile>README.md</PackageReadmeFile>
+	 <RepositoryUrl>https://github.com/20Devs/MimetypeDetective</RepositoryUrl>
+	 <RepositoryType>git</RepositoryType>
+	 <PackageTags>Mimetype,extention,magic number, file header</PackageTags>
+	 <Authors>Twenty Developers Group (20Devs.com)</Authors>
+	 <Version>$(AssemblyVersion)</Version>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="G:\Ebook\20Devs.com\Logo.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
