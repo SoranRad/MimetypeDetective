@@ -17,6 +17,9 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         private static List<MimeTypeInfo> mimeTypeList;
 
+        /// <summary>
+        /// A list of all mimetype about 600
+        /// </summary>
         public static IEnumerable<MimeTypeInfo> MimeTypeList => mimeTypeList.AsEnumerable();
 
         public static readonly MimeTypeInfo TXT = new MimeTypeInfo(new byte?[0], "txt", "text/plain","text file",false);
@@ -352,7 +355,8 @@ namespace TwentyDevs.MimeTypeDetective
             int headerSize,
             string extension,
             string mimeType,
-            string description
+            string description,
+            bool MustBeDetectByExtention
             )
         {
             byte[] headerContent = new byte[headerSize];
@@ -366,11 +370,12 @@ namespace TwentyDevs.MimeTypeDetective
             mimeTypeList.Add
             (
                 new MimeTypeInfo(header, headerOffset, extension, mimeType, description, false)
+                new MimeTypeInfo(header, headerOffset, extension, mimeType, MustBeDetectByExtention)
             );
         }
 
         /// <summary>
-        /// 
+        /// Add new mimetype to the list of mimetypes from a fileInfo class. 
         /// </summary>
         /// <param name="fileInfo">determine the file that needs its mimetype</param>
         /// <param name="headerOffset">how far is the header from begin of file content</param>
@@ -390,6 +395,7 @@ namespace TwentyDevs.MimeTypeDetective
             string extension,
             string mimeType,
             string description
+            bool MustBeDetectByExtention
         )
         {
             byte[] headerContent = new byte[headerSize];
@@ -403,11 +409,12 @@ namespace TwentyDevs.MimeTypeDetective
             mimeTypeList.Add
                 (
                 new MimeTypeInfo(header, headerOffset,extension,mimeType, description, false)    
+                new MimeTypeInfo(header, headerOffset,extension,mimeType, MustBeDetectByExtention)    
                 );
         }
 
         /// <summary>
-        /// 
+        /// Add new mimetype to the list of mimetypes from a stream. 
         /// </summary>
         /// <param name="stream">determine stream that needs </param>
         /// <param name="headerOffset">how far is the header from begin of file content</param>
@@ -426,7 +433,8 @@ namespace TwentyDevs.MimeTypeDetective
             int headerSize,
             string extension,
             string mimeType,
-            string description
+            string description,
+            bool MustBeDetectByExtention
         )
         {
             byte[] headerContent = new byte[headerSize];
@@ -438,10 +446,44 @@ namespace TwentyDevs.MimeTypeDetective
             mimeTypeList.Add
             (
                 new MimeTypeInfo(header, headerOffset, extension, mimeType, description, false)
+                new MimeTypeInfo(header, headerOffset, extension, mimeType, MustBeDetectByExtention)
             );
         }
 
+        /// <summary>
+        /// Add new mimetype to the list of mimetypes from a stream. 
+        /// </summary>
+        /// <param name="stream">determine stream that needs </param>
+        /// <param name="headerOffset">how far is the header from begin of file content</param>
+        /// <param name="headerSize">size of header to read.length fo the header</param>
+        /// <param name="extension">mimetype extention like "mp3","avi",... </param>
+        /// <param name="mimeType">
+        /// Mimetype of file.a MimeType most-commonly consists of just two parts,
+        /// a type and a subtype,
+        /// separated by a slash (/) — with no whitespace between:
+        ///  "video/3gpp","image/x-icon"
+        /// </param>
+        public static void Add(
+            byte?[] fileContent,
+            int headerOffset,
+            int headerSize,
+            string extension,
+            string mimeType,
+            bool MustBeDetectByExtention
+        )
+        {
+            if(fileContent == null)
+                return;
 
+            var header  = new byte?[headerSize];
+
+            Array.Copy(fileContent, headerOffset, header, 0, headerSize);
+
+            mimeTypeList.Add
+            (
+                new MimeTypeInfo(header, headerOffset, extension, mimeType, MustBeDetectByExtention)
+            );
+        }
 
     }
 }

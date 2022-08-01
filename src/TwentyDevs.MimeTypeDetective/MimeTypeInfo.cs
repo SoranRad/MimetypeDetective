@@ -212,6 +212,22 @@ namespace TwentyDevs.MimeTypeDetective
             return false;
         }
 
+        public static bool operator == (MimeTypeInfo a, MimeTypeInfo b)
+        {
+            if (a is null && b is null)
+                return true;
+
+            if (a is null || b is null)
+                return false;
+
+            return a.Equals(b);
+        }
+
+        public static bool operator !=(MimeTypeInfo a, MimeTypeInfo b)
+        {
+            return !(a == b);
+        }
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
