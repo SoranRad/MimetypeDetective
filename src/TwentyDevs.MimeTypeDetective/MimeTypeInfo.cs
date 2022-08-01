@@ -36,12 +36,14 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         public string       MimeType        { get; private set; }
 
-
         /// <summary>
         /// Determine this mimetype after header content must be detect by extention comaparing.
         /// some mimetype like zip and office documents have the same header content.
         /// </summary>
         public bool         MustBeDetectByExtention { get; set; }
+
+
+        public string Description { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MimeTypeInfo"/> class. 
@@ -50,6 +52,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="headerOffset">Offset of the header file</param>
         /// <param name="extension">extntion string of the file</param>
         /// <param name="mimeType"> Mimetype of file.like "video/3gpp","image/x-icon"</param>
+        /// <param name="description">description</param>
         /// <param name="mustBeDetectByExtention">
         /// Determine this mimetype after header content must be detect by extention comaparing.
         /// some mimetype like zip and office documents have the same header content.
@@ -60,12 +63,13 @@ namespace TwentyDevs.MimeTypeDetective
                     int     headerOffset, 
                     string  extension, 
                     string  mimeType,
-                    bool mustBeDetectByExtention
-                )
+                    string description,
+                    bool mustBeDetectByExtention)
         {
             HeaderContent   = headerContent;
             HeaderOffset    = headerOffset;
             MustBeDetectByExtention = mustBeDetectByExtention;
+            Description = description;
             Extension       = NormalizeExtention(extension);
             MimeType        = NormalizeMimeType(mimeType);
         }
@@ -77,6 +81,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="headerContent">Byte array of file header</param>
         /// <param name="extension">extntion string of the file</param>
         /// <param name="mimeType"> Mimetype of file.like "video/3gpp","image/x-icon"</param>
+        /// <param name="description">description</param>
         /// <param name="mustBeDetectByExtention">
         /// Determine this mimetype after header content must be detect by extention comaparing.
         /// some mimetype like zip and office documents have the same header content.
@@ -86,12 +91,12 @@ namespace TwentyDevs.MimeTypeDetective
                     byte?[] headerContent,  
                     string  extension, 
                     string  mimeType,
-                    bool mustBeDetectByExtention
-
-                )
+                    string description,
+                    bool mustBeDetectByExtention)
         {
             HeaderContent   = headerContent;
             MustBeDetectByExtention = mustBeDetectByExtention;
+            Description = description;
             Extension       = NormalizeExtention(extension);
             MimeType        = NormalizeMimeType(mimeType);
             HeaderOffset    = 0;
