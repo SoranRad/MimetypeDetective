@@ -14,8 +14,8 @@ namespace MimeTypeDetective.Test
         public void Test0010()
         {
             // arrange 
-            var mimetypeInfo  = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ", false);
-            var mimetypeInfo2 = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ", false);
+            var mimetypeInfo  = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ","", false);
+            var mimetypeInfo2 = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ","", false);
 
             // act 
             MimeTypes.Add(mimetypeInfo);
@@ -29,8 +29,8 @@ namespace MimeTypeDetective.Test
         public void Test0020()
         {
             // arrange 
-            var mimetypeInfo  = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ", false);
-            var mimetypeInfo2 = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ", false);
+            var mimetypeInfo  = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ","", false);
+            var mimetypeInfo2 = new MimeTypeInfo(new byte?[] { 0x25, 0x26 }, 0, ".rar", " application   /   x-rar-compressed ", "", false);
 
             // act 
             MimeTypes.Add(mimetypeInfo);
@@ -44,7 +44,7 @@ namespace MimeTypeDetective.Test
         public void Test0030()
         {
             // arrange 
-            MimeTypes.Add(new byte?[] { 0x55, 0x66 }, 0, 2, "ffg", "application   /   x-rar-compressed", false);
+            MimeTypes.Add(new byte?[] { 0x55, 0x66 }, 0, 2, "ffg", "application   /   x-rar-compressed", "", false);
 
             // act 
             var exist = MimeTypes.MimeTypeList.Any(x => x.Extension == "ffg");
@@ -57,7 +57,7 @@ namespace MimeTypeDetective.Test
         public void Test0040()
         {
             // arrange 
-            MimeTypes.Add(new byte?[] { 0x55, 0x66 }, 0, 2, "ffg", "application   /   x-rar-compressed", false);
+            MimeTypes.Add(new byte?[] { 0x55, 0x66 }, 0, 2, "ffg", "application   /   x-rar-compressed", "", false);
 
             // act 
             var exist = MimeTypes.MimeTypeList.Any(x => x.Extension == ".ffg");

@@ -15,7 +15,7 @@ namespace MimeTypeDetective.Test
         public void Test0010()
         {
             // arrange 
-            var txtMimetype = new MimeTypeInfo(Array.Empty<byte?>(), "txt", "text/plain", false);
+            var txtMimetype = new MimeTypeInfo(Array.Empty<byte?>(), "txt", "text/plain", "",false);
             var txtExtention = MimeTypeDetection.GetMimeTypeByExtention("txt");
 
             // act 
@@ -30,7 +30,7 @@ namespace MimeTypeDetective.Test
         public void Test0020()
         {
             // arrange 
-            var txtMimetype = new MimeTypeInfo(Array.Empty<byte?>(), "txt", "text/plain", false);
+            var txtMimetype = new MimeTypeInfo(Array.Empty<byte?>(), "txt", "text/plain", "", false);
             var txtExtention = MimeTypeDetection.GetMimeTypeinfoByMimetypestring("text/plain");
 
             // act 

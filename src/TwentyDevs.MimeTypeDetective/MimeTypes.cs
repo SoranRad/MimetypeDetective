@@ -348,7 +348,8 @@ namespace TwentyDevs.MimeTypeDetective
         /// separated by a slash (/) — with no whitespace between:
         ///  "video/3gpp","image/x-icon"
         /// </param>
-        /// <param name="description">description</param>
+        /// <param name="description">description text to the mimetype </param>
+        /// <param name="mustBeDetectByExtention"> Determine Yes if the mimetype magic number is equal with some other one else False</param>
         public static void Add(
             string filePath, 
             int headerOffset,
@@ -356,7 +357,7 @@ namespace TwentyDevs.MimeTypeDetective
             string extension,
             string mimeType,
             string description,
-            bool MustBeDetectByExtention
+            bool mustBeDetectByExtention
             )
         {
             byte[] headerContent = new byte[headerSize];
@@ -369,8 +370,7 @@ namespace TwentyDevs.MimeTypeDetective
 
             mimeTypeList.Add
             (
-                new MimeTypeInfo(header, headerOffset, extension, mimeType, description, false)
-                new MimeTypeInfo(header, headerOffset, extension, mimeType, MustBeDetectByExtention)
+                new MimeTypeInfo(header, headerOffset, extension, mimeType, description, mustBeDetectByExtention)
             );
         }
 
@@ -387,15 +387,16 @@ namespace TwentyDevs.MimeTypeDetective
         /// separated by a slash (/) — with no whitespace between:
         ///  "video/3gpp","image/x-icon"
         /// </param>
-        /// <param name="description">description</param>
+        /// <param name="description">description text to the mimetype </param>
+        /// <param name="mustBeDetectByExtention"> Determine Yes if the mimetype magic number is equal with some other one else False</param>
         public static void Add(
             FileInfo fileInfo,
             int headerOffset,
             int headerSize,
             string extension,
             string mimeType,
-            string description
-            bool MustBeDetectByExtention
+            string description,
+            bool mustBeDetectByExtention
         )
         {
             byte[] headerContent = new byte[headerSize];
@@ -408,8 +409,7 @@ namespace TwentyDevs.MimeTypeDetective
 
             mimeTypeList.Add
                 (
-                new MimeTypeInfo(header, headerOffset,extension,mimeType, description, false)    
-                new MimeTypeInfo(header, headerOffset,extension,mimeType, MustBeDetectByExtention)    
+                new MimeTypeInfo(header, headerOffset,extension,mimeType, description, mustBeDetectByExtention)    
                 );
         }
 
@@ -426,7 +426,8 @@ namespace TwentyDevs.MimeTypeDetective
         /// separated by a slash (/) — with no whitespace between:
         ///  "video/3gpp","image/x-icon"
         /// </param>
-        /// <param name="description">description</param>
+        /// <param name="description">description text to the mimetype </param>
+        /// <param name="mustBeDetectByExtention"> Determine Yes if the mimetype magic number is equal with some other one else False</param>
         public static void Add(
             Stream stream,
             int headerOffset,
@@ -434,7 +435,7 @@ namespace TwentyDevs.MimeTypeDetective
             string extension,
             string mimeType,
             string description,
-            bool MustBeDetectByExtention
+            bool mustBeDetectByExtention
         )
         {
             byte[] headerContent = new byte[headerSize];
@@ -445,8 +446,7 @@ namespace TwentyDevs.MimeTypeDetective
 
             mimeTypeList.Add
             (
-                new MimeTypeInfo(header, headerOffset, extension, mimeType, description, false)
-                new MimeTypeInfo(header, headerOffset, extension, mimeType, MustBeDetectByExtention)
+                new MimeTypeInfo(header, headerOffset, extension, mimeType, description, mustBeDetectByExtention)
             );
         }
 
@@ -463,13 +463,16 @@ namespace TwentyDevs.MimeTypeDetective
         /// separated by a slash (/) — with no whitespace between:
         ///  "video/3gpp","image/x-icon"
         /// </param>
+        /// <param name="description">description text to the mimetype </param>
+        /// <param name="mustBeDetectByExtention"> Determine Yes if the mimetype magic number is equal with some other one else False</param>
         public static void Add(
             byte?[] fileContent,
             int headerOffset,
             int headerSize,
             string extension,
             string mimeType,
-            bool MustBeDetectByExtention
+            string description,
+            bool mustBeDetectByExtention
         )
         {
             if(fileContent == null)
@@ -481,7 +484,7 @@ namespace TwentyDevs.MimeTypeDetective
 
             mimeTypeList.Add
             (
-                new MimeTypeInfo(header, headerOffset, extension, mimeType, MustBeDetectByExtention)
+                new MimeTypeInfo(header, headerOffset, extension, mimeType, description, mustBeDetectByExtention)
             );
         }
 
