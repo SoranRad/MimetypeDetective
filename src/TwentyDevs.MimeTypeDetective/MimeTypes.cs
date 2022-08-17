@@ -22,7 +22,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         public static IEnumerable<MimeTypeInfo> MimeTypeList => mimeTypeList.AsEnumerable();
 
-        public static readonly MimeTypeInfo TXT = new MimeTypeInfo(new byte?[0], "txt", "text/plain", "text file", false);
+        //public static readonly MimeTypeInfo TXT = new MimeTypeInfo(new byte?[0], "txt", "text/plain", "text file", false);
         public static readonly MimeTypeInfo _3GP = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70 }, 0, "3gp", "video/3gpp", "3GPP multimedia files",false);
         public static readonly MimeTypeInfo _3GP2 = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x00, 0x20, 0x66, 0x74, 0x79, 0x70 }, 0, "3gp2", "video/3gpp2", "3GPP2 multimedia files",false);
         public static readonly MimeTypeInfo _4XM = new MimeTypeInfo(new byte?[] { 0x52, 0x49, 0x46, 0x46 }, 0, "4xm", "application/octet-stream", "4X Movie video",true);
@@ -514,7 +514,7 @@ namespace TwentyDevs.MimeTypeDetective
         {
             mimeTypeList = new List<MimeTypeInfo>()
             {
-                TXT,
+                //TXT,
                 _3GP,
                 _3GP2,
                 _4XM,

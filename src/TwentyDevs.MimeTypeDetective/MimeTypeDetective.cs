@@ -45,7 +45,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="FilePath">string that contain path of file</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(string FilePath)
+        public static MimeTypeInfo GetMimeType(string FilePath )
         {
             var header = ReadHeaderContent(FilePath);
 
@@ -58,11 +58,11 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="FileContent"> determine the contnet of array want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(this byte[] FileContent)
+        public static MimeTypeInfo GetMimeType(this byte[] FileContent, string extention = "")
         {
             var header = Array.ConvertAll<byte, byte?>(FileContent.Take(MaxHeaderSize).ToArray(), input => input);
 
-            return FindMimeTpe(header, "");
+            return FindMimeTpe(header, extention);
         }
 
         /// <summary>
@@ -70,11 +70,11 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="stream"> determine the stream want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(this Stream stream)
+        public static MimeTypeInfo GetMimeType(this Stream stream, string extention = "")
         {
             var header = ReadHeaderContent(stream);
 
-            return FindMimeTpe(header, "");
+            return FindMimeTpe(header, extention);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="stream"> determine the stream want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(this FileInfo file)
+        public static MimeTypeInfo GetMimeType(this FileInfo file, string extention = "")
         {
             var header = ReadHeaderContent(file);
 
@@ -99,9 +99,9 @@ namespace TwentyDevs.MimeTypeDetective
         /// <returns>all information of the mimetype</returns>
         private static MimeTypeInfo FindMimeTpe(byte?[] headerContent,string extention ="")
         {
-            // if all headers are null value it is a text file.
-            if (headerContent.All(b => b != 0))
-                return MimeTypes.TXT;
+            //// if all headers are null value it is a text file.
+            //if (headerContent.All(b => b != 0))
+            //    return MimeTypes.TXT;
 
 
             // search the all list of 
@@ -131,7 +131,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <returns>return true if sequential arrays are equal else return false.</returns>
         private static bool CompareBuffer(ref byte?[] Buffer1,ref byte?[] Buffer2, int startIndexOfBuffer1)
         {
-            if (Buffer1 == null || Buffer2 == null)
+            if (Buffer1 == null || Buffer2 == null || Buffer2.Length == 0)
                 return false;
 
             if (Buffer1.Length < (Buffer2.Length + startIndexOfBuffer1))

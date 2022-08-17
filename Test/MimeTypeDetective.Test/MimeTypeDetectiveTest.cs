@@ -15,8 +15,8 @@ namespace MimeTypeDetective.Test
         public void Test0010()
         {
             // arrange 
-            var txtMimetype = new MimeTypeInfo(Array.Empty<byte?>(), "txt", "text/plain", "",false);
-            var txtExtention = MimeTypeDetection.GetMimeTypeByExtention("txt");
+            var txtMimetype = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70 }, "3gp", "video/3gpp", "",false);
+            var txtExtention = MimeTypeDetection.GetMimeTypeByExtention("3gp");
 
             // act 
             var result = txtExtention == txtMimetype;
@@ -30,8 +30,8 @@ namespace MimeTypeDetective.Test
         public void Test0020()
         {
             // arrange 
-            var txtMimetype = new MimeTypeInfo(Array.Empty<byte?>(), "txt", "text/plain", "", false);
-            var txtExtention = MimeTypeDetection.GetMimeTypeinfoByMimetypestring("text/plain");
+            var txtMimetype = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70 },  "3gp", "video/3gpp", "", false);
+            var txtExtention = MimeTypeDetection.GetMimeTypeinfoByMimetypestring("video/3gpp");
 
             // act 
             var result = txtExtention == txtMimetype;
