@@ -10,7 +10,7 @@ namespace Sample1
         static void Main(string[] args)
         {
             // --------------------
-            // XML Mimetype Adding To List 
+            // Adding XML Mimetype To List 
             // --------------------
 
             var headerXML = new byte?[]

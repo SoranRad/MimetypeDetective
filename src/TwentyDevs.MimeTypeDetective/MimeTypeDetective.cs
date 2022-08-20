@@ -181,8 +181,6 @@ namespace TwentyDevs.MimeTypeDetective
             {
                 throw new ApplicationException("Could not read header file : " + e.Message);
             }
-
-
         }
         private static byte?[] ReadHeaderContent (string FilePath)
         {
