@@ -18,3 +18,6 @@ It is possible to add more mimetypes in the library to detect files related to t
 
 to detect a mimetype of a file with the address : 
 
+```csharp
+MimeTypeDetection.GetMimeType(filePath, Path.GetExtension(filePath));
+```
