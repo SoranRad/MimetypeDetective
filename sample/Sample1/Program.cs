@@ -9,6 +9,13 @@ namespace Sample1
     {
         static void Main(string[] args)
         {
+            GetMimetypeByExtension();
+
+            Console.ReadKey();
+        }
+
+        static void AddNewMimetypeToCollection()
+        {
             // --------------------
             // Adding XML Mimetype To List 
             // --------------------
@@ -28,10 +35,55 @@ namespace Sample1
                 extension: "svg",
                 mimeType: "image/svg+xml",
                 description: "Scalable Vector Graphics is an XML-based vector",
-                mustBeDetectByExtention: true
+                mustBeDetectByExtension: true
 
             );
 
+
+        }
+        static void GetMimeTypeinfoByMimetypestring()
+        {
+            //--------------------
+            //Mimetype Detection By MimetypeString
+            //--------------------
+
+            var mimetype = MimeTypeDetection.GetMimeTypeinfoByMimetypestring("image/gif");
+
+            if (mimetype == null)
+            {
+                Console.WriteLine($"Sorry,No Item Found.");
+            }
+            else
+            {
+                Console.WriteLine($"Extension:{mimetype.Extension}");
+                Console.WriteLine($"miemtype:{mimetype.MimeType}");
+                Console.WriteLine($"Description:{mimetype.Description}");
+            }
+        }
+
+        static void GetMimetypeByExtension()
+        {
+            //--------------------
+            //Mimetype Detection By Extention
+            //--------------------
+
+            var mimetype = MimeTypeDetection.GetMimeTypeByExtension("rar");
+
+            if (mimetype == null)
+            {
+                Console.WriteLine($"Sorry,No Item Found.");
+            }
+            else
+            {
+                Console.WriteLine($"Extension:{mimetype.Extension}");
+                Console.WriteLine($"miemtype:{mimetype.MimeType}");
+                Console.WriteLine($"Description:{mimetype.Description}");
+            }
+
+        }
+
+        static void GetMimetypeByMagicNumber()
+        {
 
             //--------------------
             //Mimetype Detection
@@ -46,20 +98,18 @@ namespace Sample1
             //var mimetype    = MimeTypeDetection.GetMimeType(buffer, Path.GetExtension(filePath));
             var mimetype = MimeTypeDetection.GetMimeType(stream, Path.GetExtension(filePath));
 
-            
+
             if (mimetype == null)
             {
                 Console.WriteLine($"Sorry,No Item Found.");
             }
             else
             {
-                Console.WriteLine($"Extention:{mimetype.Extension}");
+                Console.WriteLine($"Extension:{mimetype.Extension}");
                 Console.WriteLine($"miemtype:{mimetype.MimeType}");
                 Console.WriteLine($"Description:{mimetype.Description}");
             }
 
-
-            Console.ReadKey();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace TwentyDevs.MimeTypeDetective
 {
     /// <summary>
     /// Hold neccessary information about file content to deetect mime type.
-    /// information like header content ,header offset ,file extention and file Mimetype string.
+    /// information like header content ,header offset ,file Extension and file Mimetype string.
     /// to detection and comparing mime type these information are required.
     /// </summary>
     public class MimeTypeInfo
@@ -23,7 +23,7 @@ namespace TwentyDevs.MimeTypeDetective
         public int          HeaderOffset    { get; set; }
 
         /// <summary>
-        /// File extention or a suffix at the end of a file name.
+        /// File Extension or a suffix at the end of a file name.
         /// start with (.) and end with  three a or four characters that are unique.
         /// </summary>
         public string       Extension       { get; private set; }
@@ -37,10 +37,10 @@ namespace TwentyDevs.MimeTypeDetective
         public string       MimeType        { get; private set; }
 
         /// <summary>
-        /// Determine this mimetype after header content must be detect by extention comaparing.
+        /// Determine this mimetype after header content must be detect by Extension comaparing.
         /// some mimetype like zip and office documents have the same header content.
         /// </summary>
-        public bool         MustBeDetectByExtention { get; set; }
+        public bool         MustBeDetectByExtension { get; set; }
 
 
         public string Description { get; private set; }
@@ -53,8 +53,8 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="extension">extntion string of the file</param>
         /// <param name="mimeType"> Mimetype of file.like "video/3gpp","image/x-icon"</param>
         /// <param name="description">description</param>
-        /// <param name="mustBeDetectByExtention">
-        /// Determine this mimetype after header content must be detect by extention comaparing.
+        /// <param name="mustBeDetectByExtension">
+        /// Determine this mimetype after header content must be detect by Extension comaparing.
         /// some mimetype like zip and office documents have the same header content.
         /// </param>
         public MimeTypeInfo
@@ -64,13 +64,13 @@ namespace TwentyDevs.MimeTypeDetective
                     string  extension, 
                     string  mimeType,
                     string description,
-                    bool mustBeDetectByExtention)
+                    bool mustBeDetectByExtension)
         {
             HeaderContent   = headerContent;
             HeaderOffset    = headerOffset;
-            MustBeDetectByExtention = mustBeDetectByExtention;
+            MustBeDetectByExtension = mustBeDetectByExtension;
             Description = description;
-            Extension       = NormalizeExtention(extension);
+            Extension       = NormalizeExtension(extension);
             MimeType        = NormalizeMimeType(mimeType);
         }
 
@@ -82,8 +82,8 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="extension">extntion string of the file</param>
         /// <param name="mimeType"> Mimetype of file.like "video/3gpp","image/x-icon"</param>
         /// <param name="description">description</param>
-        /// <param name="mustBeDetectByExtention">
-        /// Determine this mimetype after header content must be detect by extention comaparing.
+        /// <param name="mustBeDetectByExtension">
+        /// Determine this mimetype after header content must be detect by Extension comaparing.
         /// some mimetype like zip and office documents have the same header content.
         /// </param> 
         public MimeTypeInfo
@@ -92,12 +92,12 @@ namespace TwentyDevs.MimeTypeDetective
                     string  extension, 
                     string  mimeType,
                     string description,
-                    bool mustBeDetectByExtention)
+                    bool mustBeDetectByExtension)
         {
             HeaderContent   = headerContent;
-            MustBeDetectByExtention = mustBeDetectByExtention;
+            MustBeDetectByExtension = mustBeDetectByExtension;
             Description = description;
-            Extension       = NormalizeExtention(extension);
+            Extension       = NormalizeExtension(extension);
             MimeType        = NormalizeMimeType(mimeType);
             HeaderOffset    = 0;
         }
@@ -119,15 +119,15 @@ namespace TwentyDevs.MimeTypeDetective
         /// remove all space character in a string and make string to lowercase and add dot character
         /// to first of string
         /// </summary>
-        /// <param name="extention"> file extention like mp3,avi, ogg , ...</param>
-        /// <returns>return extention string with lowercase,dot at first and with no space</returns>
-        public static string NormalizeExtention(string extention)
+        /// <param name="Extension"> file Extension like mp3,avi, ogg , ...</param>
+        /// <returns>return Extension string with lowercase,dot at first and with no space</returns>
+        public static string NormalizeExtension(string Extension)
         {
-            extention = RemoveSpace(extention).ToLower();
+            Extension = RemoveSpace(Extension).ToLower();
 
-            if (!extention.StartsWith("."))
-                extention = "." + extention;
-            return extention;
+            if (!Extension.StartsWith("."))
+                Extension = "." + Extension;
+            return Extension;
         }
 
         /// <summary>
@@ -143,11 +143,11 @@ namespace TwentyDevs.MimeTypeDetective
             return str;
         }
         /// <summary>
-        /// Determines whether the specified mimetype is equal to the current mimetype by the extentions
+        /// Determines whether the specified mimetype is equal to the current mimetype by the Extensions
         /// </summary>
         /// <param name="other">specified mimetype for comparing</param>
-        /// <returns>true if the specified extentions extention is equal to the current mimetype extntion ,otherwise, false.</returns>
-        public bool EqualsByExtention(MimeTypeInfo other)
+        /// <returns>true if the specified Extensions Extension is equal to the current mimetype extntion ,otherwise, false.</returns>
+        public bool EqualsByExtension(MimeTypeInfo other)
         {
             return string.CompareOrdinal(this.Extension, other.Extension) == 0;
         }

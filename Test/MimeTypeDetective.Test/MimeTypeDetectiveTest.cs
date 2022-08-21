@@ -16,7 +16,7 @@ namespace MimeTypeDetective.Test
         {
             // arrange 
             var txtMimetype = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x00, 0x14, 0x66, 0x74, 0x79, 0x70 }, "3gp", "video/3gpp", "",false);
-            var txtExtention = MimeTypeDetection.GetMimeTypeByExtention("3gp");
+            var txtExtention = MimeTypeDetection.GetMimeTypeByExtension("3gp");
 
             // act 
             var result = txtExtention == txtMimetype;

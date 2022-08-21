@@ -2,24 +2,32 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
-    <AssemblyVersion>1.0.33.0</AssemblyVersion>
-    <FileVersion>1.0.33.0</FileVersion>
+    <AssemblyVersion>1.0.39.0</AssemblyVersion>
+    <FileVersion>1.0.39.0</FileVersion>
     <ApplicationIcon>Logo.ico</ApplicationIcon>
-	 <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <Title>MimetypeDetective</Title>
+		  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	 <Company>20Devs.com</Company>
 	 <Copyright>Copyright © Twenty Developers 2022</Copyright>
-	 <Description>A library for .net to detect file mimetype from name, extention and header content(magic number).</Description>
-	 <PackageProjectUrl>https://github.com/20Devs/MimetypeDetective</PackageProjectUrl>
+	 <Description>
+		 A simple library to detect mimetype of a file, stream or buffer array via magic numbers in the header content.
+		 Detects mimetype of an extension string.
+		 Detects all information of a mimetype string like magic numbers, extension and ... .
+		 It Contains over than 480 mimtyps sample that  as hardcod defined  in the library.
+	 </Description>
+	 <PackageProjectUrl>https://20devs.com/mime-type-detective/</PackageProjectUrl>
 	 <PackageIcon>Logo.png</PackageIcon>
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
 	 <RepositoryUrl>https://github.com/20Devs/MimetypeDetective</RepositoryUrl>
 	 <RepositoryType>git</RepositoryType>
-	 <PackageTags>Mimetype,extention,magic number, file header</PackageTags>
+	 <PackageTags>Mimetype,Extension,magic number, file header</PackageTags>
 	 <Authors>Twenty Developers Group (20Devs.com)</Authors>
 	 <Version>$(AssemblyVersion)</Version>
 	 <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
-
+	<PropertyGroup>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
   <ItemGroup>
     <Content Include="Logo.ico" />
   </ItemGroup>

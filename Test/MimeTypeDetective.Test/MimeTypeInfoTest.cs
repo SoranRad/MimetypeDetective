@@ -87,7 +87,7 @@ namespace MimeTypeDetective.Test
             var mimetypeInfo = new MimeTypeInfo(null, 0, ".rar", " application   /   x-rar-compressed ","", false);
             var mimetypeInfo2 = new MimeTypeInfo(null, 0, "zip", " application   /   x-rar-compressed ", "", false);
             // act
-            var mimetype = mimetypeInfo.EqualsByExtention(mimetypeInfo2);
+            var mimetype = mimetypeInfo.EqualsByExtension(mimetypeInfo2);
             // assert
 
             mimetype.Should().Be(false);

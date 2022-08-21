@@ -7,7 +7,7 @@ using System.Text;
 namespace TwentyDevs.MimeTypeDetective
 {
     /// <summary>
-    /// A class that contain methos to find and detect miemtype of  a file Path or stream or extention.
+    /// A class that contain methos to find and detect miemtype of  a file Path or stream or Extension.
     /// </summary>
     public static class MimeTypeDetection
     {
@@ -17,13 +17,13 @@ namespace TwentyDevs.MimeTypeDetective
         public  const int MaxHeaderSize = 570;
 
         /// <summary>
-        /// determine mimetype of the extention.
+        /// determine mimetype of the Extension.
         /// </summary>
-        /// <param name="extentin">the extention that its mimetype required</param>
+        /// <param name="extentin">the Extension that its mimetype required</param>
         /// <returns>all information of the mimetype </returns>
-        public static MimeTypeInfo GetMimeTypeByExtention(string extentin)
+        public static MimeTypeInfo GetMimeTypeByExtension(string extentin)
         {
-            extentin = MimeTypeInfo.NormalizeExtention(extentin);
+            extentin = MimeTypeInfo.NormalizeExtension(extentin);
             return MimeTypes.MimeTypeList.FirstOrDefault(x => x.Extension == extentin);
         }
 
@@ -58,11 +58,11 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="FileContent"> determine the contnet of array want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(this byte[] FileContent, string extention = "")
+        public static MimeTypeInfo GetMimeType(this byte[] FileContent, string Extension = "")
         {
             var header = Array.ConvertAll<byte, byte?>(FileContent.Take(MaxHeaderSize).ToArray(), input => input);
 
-            return FindMimeTpe(header, extention);
+            return FindMimeTpe(header, Extension);
         }
 
         /// <summary>
@@ -70,11 +70,11 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="stream"> determine the stream want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(this Stream stream, string extention = "")
+        public static MimeTypeInfo GetMimeType(this Stream stream, string Extension = "")
         {
             var header = ReadHeaderContent(stream);
 
-            return FindMimeTpe(header, extention);
+            return FindMimeTpe(header, Extension);
         }
 
         /// <summary>
@@ -82,22 +82,22 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="stream"> determine the stream want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
-        public static MimeTypeInfo GetMimeType(this FileInfo file, string extention = "")
+        public static MimeTypeInfo GetMimeType(this FileInfo file, string Extension = "")
         {
             var header = ReadHeaderContent(file);
 
-            return FindMimeTpe(header, MimeTypeInfo.NormalizeExtention( file.Extension));
+            return FindMimeTpe(header, MimeTypeInfo.NormalizeExtension( file.Extension));
         }
 
         /// <summary>
         /// find mimetype of a byte array
         /// </summary>
         /// <param name="headerContent">determine the header content that its mimetype required</param>
-        /// <param name="extention">
+        /// <param name="Extension">
         /// some mimetype have a same header content like zip and office documents
         /// </param>
         /// <returns>all information of the mimetype</returns>
-        private static MimeTypeInfo FindMimeTpe(byte?[] headerContent,string extention ="")
+        private static MimeTypeInfo FindMimeTpe(byte?[] headerContent,string Extension ="")
         {
             //// if all headers are null value it is a text file.
             //if (headerContent.All(b => b != 0))
@@ -112,8 +112,8 @@ namespace TwentyDevs.MimeTypeDetective
                 if (CompareBuffer(ref headerContent, ref header, mimeType.HeaderOffset))
                 {
 
-                    if (mimeType.MustBeDetectByExtention && !string.IsNullOrWhiteSpace(extention))
-                        return GetMimeTypeByExtention(extention);
+                    if (mimeType.MustBeDetectByExtension && !string.IsNullOrWhiteSpace(Extension))
+                        return GetMimeTypeByExtension(Extension);
                     
                     return mimeType;
                 }
