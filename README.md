@@ -55,6 +55,10 @@ There is a sample in the source code to add a new mimetype and then use it to de
 ### Using To File Validation 
 
 I will develope some attributes in asp.net to validate files via this library.
-
 I’ll link it here so follow us.
+
+### Donate Us
+
+<a href="https://www.buymeacoffee.com/20devs" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 
