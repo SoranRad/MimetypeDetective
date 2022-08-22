@@ -54,6 +54,7 @@ There is a sample in the source code to add a new mimetype and then use it to de
 
 ### Using To File Validation 
 
-I will develop some attributes in asp.net to validate files via this library.
+I will develope some attributes in asp.net to validate files via this library.
+
 I’ll link it here so follow us.
 
