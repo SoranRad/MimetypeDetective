@@ -31,7 +31,7 @@ MimeTypeDetection.GetMimeTypeByExtension("rar");
 To get other information about the particular mimetype :
 
 ```csharp
-MimeTypeDetection.GetMimeTypeinfoByMimetypestring("image/gif");
+MimeTypeDetection.GetMimeTypeinfoByMimetypeString("image/gif");
 ```
 
 Except for mimetypes that are defined in the library you can add other mimetype to the mimetypes collection.
