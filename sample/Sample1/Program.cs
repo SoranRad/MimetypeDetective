@@ -47,7 +47,7 @@ namespace Sample1
             //Mimetype Detection By MimetypeString
             //--------------------
 
-            var mimetype = MimeTypeDetection.GetMimeTypeinfoByMimetypestring("image/gif");
+            var mimetype = MimeTypeDetection.GetMimeTypeinfoByMimetypeString("image/gif");
 
             if (mimetype == null)
             {

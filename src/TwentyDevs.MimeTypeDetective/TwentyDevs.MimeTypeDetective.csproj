@@ -2,19 +2,15 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
-    <AssemblyVersion>1.0.39.0</AssemblyVersion>
-    <FileVersion>1.0.39.0</FileVersion>
-    <ApplicationIcon>Logo.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.43.0</AssemblyVersion>
+    <FileVersion>1.0.43.0</FileVersion>
+    
 	  <Title>MimetypeDetective</Title>
 		  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	 <Company>20Devs.com</Company>
 	 <Copyright>Copyright © Twenty Developers 2022</Copyright>
-	 <Description>
-		 A simple library to detect mimetype of a file, stream or buffer array via magic numbers in the header content.
-		 Detects mimetype of an extension string.
-		 Detects all information of a mimetype string like magic numbers, extension and ... .
-		 It Contains over than 480 mimtyps sample that  as hardcod defined  in the library.
-	 </Description>
+	 <Description>A simple library to detect mimetype of a file, stream or buffer array via magic numbers in the header content. It contains over 480 samples that as hardcoded in the library.
+Detect mimetype of an extension string or mimetype string like “rar”, “exe”,” image/gif” …. It is possible to add more mimetypes in the library to detect files related to them. In fact, this library finds the mimetype via magic numbers.</Description>
 	 <PackageProjectUrl>https://20devs.com/mime-type-detective/</PackageProjectUrl>
 	 <PackageIcon>Logo.png</PackageIcon>
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -28,9 +24,7 @@
 	<PropertyGroup>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
-  <ItemGroup>
-    <Content Include="Logo.ico" />
-  </ItemGroup>
+  
 
   <ItemGroup>
     <None Include="..\..\README.md">

@@ -33,7 +33,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// </summary>
         /// <param name="mimetype">the mimetype that its information required</param>
         /// <returns>all information of the mimetype </returns>
-        public static MimeTypeInfo GetMimeTypeinfoByMimetypestring(string mimetype)
+        public static MimeTypeInfo GetMimeTypeinfoByMimetypeString(string mimetype)
         {
             mimetype = MimeTypeInfo.NormalizeMimeType(mimetype);
             return MimeTypes.MimeTypeList.FirstOrDefault(x => x.MimeType == mimetype);
