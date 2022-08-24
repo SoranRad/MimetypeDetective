@@ -23,7 +23,8 @@ MimeTypeDetection.GetMimeType(filePath, Path.GetExtension(filePath));
 ```
 In the example, passed the extension to method because some files like fdf, pdf, zip, and office files(xlsx, Docx, … ) have the same magic numbers, then detection must be done by extension.
 Also, it is possible to Detect the mimetype of streams and buffers (byte array) with the method.
-if needs the mimetype of an extension :
+
+To get the mimetype of an extension :
 
 ```csharp
 MimeTypeDetection.GetMimeTypeByExtension("rar");
