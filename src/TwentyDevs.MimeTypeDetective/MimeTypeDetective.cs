@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TwentyDevs.MimeTypeDetective
 {
@@ -54,6 +55,19 @@ namespace TwentyDevs.MimeTypeDetective
         }
 
         /// <summary>
+        /// Determin the  mimetype of the file by its path.
+        /// </summary>
+        /// <param name="FilePath">string that contain path of file</param>
+        /// <returns>all information of the mimetype</returns>
+        public async static Task<MimeTypeInfo> GetMimeTypeAsync(string FilePath )
+        {
+            var header = await ReadHeaderContentAsync(FilePath);
+
+            return FindMimeTpe(header, Path.GetExtension(FilePath));
+
+        }
+
+        /// <summary>
         /// return the  mimetype of byte ararys.
         /// </summary>
         /// <param name="FileContent"> determine the contnet of array want to find its mimetype</param>
@@ -76,15 +90,37 @@ namespace TwentyDevs.MimeTypeDetective
 
             return FindMimeTpe(header, Extension);
         }
-
+        
         /// <summary>
         /// return the  mimetype of the stream.
         /// </summary>
         /// <param name="stream"> determine the stream want to find its mimetype</param>
         /// <returns>all information of the mimetype</returns>
+        public async static Task<MimeTypeInfo> GetMimeTypeAsync(this Stream stream, string Extension = "")
+        {
+            var header = await ReadHeaderContentAsync(stream);
+
+            return FindMimeTpe(header, Extension);
+        }
+        /// <summary>
+        /// return the  mimetype of the stream.
+        /// </summary>
+        /// <param name="file"> determine the stream want to find its mimetype</param>
+        /// <returns>all information of the mimetype</returns>
         public static MimeTypeInfo GetMimeType(this FileInfo file, string Extension = "")
         {
             var header = ReadHeaderContent(file);
+
+            return FindMimeTpe(header, MimeTypeInfo.NormalizeExtension( file.Extension));
+        }
+         /// <summary>
+        /// return the  mimetype of the stream.
+        /// </summary>
+        /// <param name="file"> determine the stream want to find its mimetype</param>
+        /// <returns>all information of the mimetype</returns>
+        public async static Task<MimeTypeInfo> GetMimeTypeAsync(this FileInfo file, string Extension = "")
+        {
+            var header = await ReadHeaderContentAsync(file);
 
             return FindMimeTpe(header, MimeTypeInfo.NormalizeExtension( file.Extension));
         }
@@ -145,7 +181,28 @@ namespace TwentyDevs.MimeTypeDetective
             }
             return true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        /// <exception cref="ApplicationException"></exception>
+        private async static Task<byte?[]> ReadHeaderContentAsync (FileInfo file)
+        {
+            var headerContent = new byte[MaxHeaderSize];
+            try   
+            {
+                using (var fileStream = file.OpenRead())
+                { 
+                   await fileStream.ReadAsync(headerContent, 0, MaxHeaderSize);
+                }
+                return Array.ConvertAll<byte, byte?>(headerContent, input => input);
+            }
+            catch (Exception e) 
+            {
+                throw new ApplicationException("Could not read header file : " + e.Message);
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -182,6 +239,20 @@ namespace TwentyDevs.MimeTypeDetective
                 throw new ApplicationException("Could not read header file : " + e.Message);
             }
         }
+           private async static Task<byte?[]> ReadHeaderContentAsync (Stream stream)
+        {
+            var headerContent = new byte[MaxHeaderSize];
+
+            try
+            {
+                await stream.ReadAsync(headerContent, 0, MaxHeaderSize);
+                return Array.ConvertAll<byte, byte?>(headerContent, input => input);
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException("Could not read header file : " + e.Message);
+            }
+        }
         private static byte?[] ReadHeaderContent (string FilePath)
         {
             var headerContent = new byte[MaxHeaderSize];
@@ -202,5 +273,27 @@ namespace TwentyDevs.MimeTypeDetective
             return Array.ConvertAll<byte, byte?>(headerContent, input => input);
 
         }
+          private async static Task<byte?[]> ReadHeaderContentAsync (string FilePath)
+        {
+            var headerContent = new byte[MaxHeaderSize];
+
+            try   
+            {
+                using (FileStream fsSource = new FileStream(FilePath, FileMode.Open, FileAccess.Read,FileShare.ReadWrite))
+                {
+                    await fsSource.ReadAsync(headerContent, 0, MaxHeaderSize);
+                }   
+
+            }
+            catch (Exception e) // file could not be found/read
+            {
+                throw new ApplicationException("Could not read file : " + e.Message);
+            }
+
+            return Array.ConvertAll<byte, byte?>(headerContent, input => input);
+
+        }
+        
+        
     }
 }
