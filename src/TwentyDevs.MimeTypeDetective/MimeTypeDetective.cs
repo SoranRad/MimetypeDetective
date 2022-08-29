@@ -61,7 +61,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="FilePath">string that contain path of file</param>
         /// <param name="token">Cancellation token</param>
         /// <returns>all information of the mimetype</returns>
-        public async static Task<MimeTypeInfo> GetMimeTypeAsync(string FilePath, CancellationToken token = default)
+        public static async Task<MimeTypeInfo> GetMimeTypeAsync(string FilePath, CancellationToken token = default)
         {
             var header = await ReadHeaderContentAsync(FilePath, token);
 
@@ -76,6 +76,19 @@ namespace TwentyDevs.MimeTypeDetective
          /// <param name="Extension"></param>
         /// <returns>all information of the mimetype</returns>
         public static MimeTypeInfo GetMimeType(this byte[] FileContent, string Extension = "")
+        {
+            var header = Array.ConvertAll<byte, byte?>(FileContent.Take(MaxHeaderSize).ToArray(), input => input);
+
+            return FindMimeTpe(header, Extension);
+        }
+
+        /// <summary>
+        /// return the  mimetype of byte ararys.
+        /// </summary>
+        /// <param name="FileContent"> determine the contnet of array want to find its mimetype</param>
+        /// <param name="Extension"></param>
+        /// <returns>all information of the mimetype</returns>
+        public static async Task<MimeTypeInfo> GetMimeTypeAsync(this byte[] FileContent, string Extension = "", CancellationToken token = default)
         {
             var header = Array.ConvertAll<byte, byte?>(FileContent.Take(MaxHeaderSize).ToArray(), input => input);
 
@@ -102,7 +115,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="Extension"></param>
         /// <param name="token"></param>
         /// <returns>all information of the mimetype</returns>
-        public async static Task<MimeTypeInfo> GetMimeTypeAsync(this Stream stream, string Extension = "", CancellationToken token = default)
+        public static async Task<MimeTypeInfo> GetMimeTypeAsync(this Stream stream, string Extension = "", CancellationToken token = default)
         {
             var header = await ReadHeaderContentAsync(stream, token);
 
@@ -127,7 +140,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="Extension"></param>
         /// <param name="token"></param>
         /// <returns>all information of the mimetype</returns>
-        public async static Task<MimeTypeInfo> GetMimeTypeAsync(this FileInfo file, string Extension = "" , CancellationToken token = default)
+        public static async Task<MimeTypeInfo> GetMimeTypeAsync(this FileInfo file, string Extension = "" , CancellationToken token = default)
         {
             var header = await ReadHeaderContentAsync(file, token);
 
@@ -197,7 +210,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="token"></param>
         /// <returns></returns>
         /// <exception cref="ApplicationException"></exception>
-        private async static Task<byte?[]> ReadHeaderContentAsync (FileInfo file, CancellationToken token)
+        private static async Task<byte?[]> ReadHeaderContentAsync (FileInfo file, CancellationToken token)
         {
             var headerContent = new byte[MaxHeaderSize];
             try   
@@ -249,7 +262,7 @@ namespace TwentyDevs.MimeTypeDetective
                 throw new ApplicationException("Could not read header file : " + e.Message);
             }
         }
-           private async static Task<byte?[]> ReadHeaderContentAsync (Stream stream, CancellationToken token)
+           private static async Task<byte?[]> ReadHeaderContentAsync (Stream stream, CancellationToken token)
         {
             var headerContent = new byte[MaxHeaderSize];
 
@@ -283,7 +296,7 @@ namespace TwentyDevs.MimeTypeDetective
             return Array.ConvertAll<byte, byte?>(headerContent, input => input);
 
         }
-          private async static Task<byte?[]> ReadHeaderContentAsync (string FilePath, CancellationToken token)
+          private static async Task<byte?[]> ReadHeaderContentAsync (string FilePath, CancellationToken token)
         {
             var headerContent = new byte[MaxHeaderSize];
 
