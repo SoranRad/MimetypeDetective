@@ -776,6 +776,7 @@ namespace TwentyDevs.MimeTypeDetective
                 MOV_4,
                 MOV_5,
                 MOV_6,
+                MP,
                 MP4,
                 MP3,
                 MPG_1,
