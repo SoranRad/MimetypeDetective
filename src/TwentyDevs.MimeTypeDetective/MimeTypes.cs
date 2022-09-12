@@ -285,6 +285,7 @@ namespace TwentyDevs.MimeTypeDetective
         public static readonly MimeTypeInfo MOV_6 = new MimeTypeInfo(new byte?[] { 0x73, 0x6B, 0x69, 0x70 }, 4, "mov", "video/quicktime", "QuickTime movie_6", false);
         public static readonly MimeTypeInfo MP = new MimeTypeInfo(new byte?[] { 0x0C, 0xED }, 0, "mp", "", "Monochrome Picture TIFF bitmap", false);
         public static readonly MimeTypeInfo MP3 = new MimeTypeInfo(new byte?[] { 0x49, 0x44, 0x33 }, 0, "mp3", "audio/mpeg", "MP3 audio file", false);
+        public static readonly MimeTypeInfo MP4 = new MimeTypeInfo(new byte?[] { 0x66, 0x74, 0x79, 0x70, 0x6D, 0x70, 0x34 }, 4, "mp4", "video/mp4", "MP4 video file", false);
         public static readonly MimeTypeInfo MPG_1 = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x01, 0xBA }, 0, "mpg", "video/mpeg", "DVD video file", true);
         public static readonly MimeTypeInfo MPG_2 = new MimeTypeInfo(new byte?[] { 0x00, 0x00, 0x01, 0xB3 }, 0, "mpg", "video/mpeg", "MPEG video file", false);
         public static readonly MimeTypeInfo MSC_1 = new MimeTypeInfo(new byte?[] { 0xD0, 0xCF, 0x11, 0xE0, 0xA1, 0xB1, 0x1A, 0xE1 }, 0, "msc", "", "Microsoft Common Console Document", true);
@@ -775,7 +776,7 @@ namespace TwentyDevs.MimeTypeDetective
                 MOV_4,
                 MOV_5,
                 MOV_6,
-                MP,
+                MP4,
                 MP3,
                 MPG_1,
                 MPG_2,
@@ -1024,7 +1025,7 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="description">description text to the mimetype </param>
         /// <param name="mustBeDetectByExtension"> Determine Yes if the mimetype magic number is equal with some other one else False</param>
         public static void Add(
-            string filePath, 
+            string filePath,
             int headerOffset,
             int headerSize,
             string extension,
@@ -1048,7 +1049,7 @@ namespace TwentyDevs.MimeTypeDetective
         }
 
         /// <summary>
-        /// Add new mimetype to the list of mimetypes from a fileInfo class. 
+        /// Add new mimetype to the list of mimetypes from a fileInfo class.
         /// </summary>
         /// <param name="fileInfo">determine the file that needs its mimetype</param>
         /// <param name="headerOffset">how far is the header from begin of file content</param>
@@ -1082,12 +1083,12 @@ namespace TwentyDevs.MimeTypeDetective
 
             mimeTypeList.Add
                 (
-                new MimeTypeInfo(header, headerOffset,extension,mimeType, description, mustBeDetectByExtension)    
+                new MimeTypeInfo(header, headerOffset,extension,mimeType, description, mustBeDetectByExtension)
                 );
         }
 
         /// <summary>
-        /// Add new mimetype to the list of mimetypes from a stream. 
+        /// Add new mimetype to the list of mimetypes from a stream.
         /// </summary>
         /// <param name="stream">determine stream that needs </param>
         /// <param name="headerOffset">how far is the header from begin of file content</param>
@@ -1112,7 +1113,7 @@ namespace TwentyDevs.MimeTypeDetective
         )
         {
             byte[] headerContent = new byte[headerSize];
-           
+
             stream.Read(headerContent, headerOffset, headerSize);
 
             var header = Array.ConvertAll<byte, byte?>(headerContent, input => input);
@@ -1124,7 +1125,7 @@ namespace TwentyDevs.MimeTypeDetective
         }
 
         /// <summary>
-        /// Add new mimetype to the list of mimetypes from a stream. 
+        /// Add new mimetype to the list of mimetypes from a stream.
         /// </summary>
         /// <param name="stream">determine stream that needs </param>
         /// <param name="headerOffset">how far is the header from begin of file content</param>
