@@ -55,8 +55,15 @@ There is a sample in the source code to add a new mimetype and then use it to de
 
 ### Using To File Validation 
 
-I will develope some attributes in asp.net to validate files via this library.
-I’ll link it here so follow us.
+<a href="https://github.com/20Devs/FileValidation" target="_blank">
+A sample to use in .net core 
+</a>
+
+<a href="https://github.com/20Devs/FluentValidation" target="_blank">
+
+A sample to use in .net core with FluentValidation
+</a>
+
 
 ### Donate Us
 
