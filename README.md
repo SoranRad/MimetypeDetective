@@ -55,13 +55,13 @@ There is a sample in the source code to add a new mimetype and then use it to de
 
 ### Using To File Validation 
 
-[A sample to use in .net core ](https://twentydevs.com/file-validation-net)
-[A sample to use in .net core with FluentValidation](https://twentydevs.com/file-validation-net/)
+- [Complete Guide ](https://twentydevs.com/find-mimetype/)
+
+- [A sample to use in .net core ](https://twentydevs.com/file-validation-net)
+
+- [A sample to use in .net core with FluentValidation](https://twentydevs.com/file-validation-net/)
 
 
-<a href="https://github.com/20Devs/FluentValidation" target="_blank">
-
-</a>
 
 
 ### Donate Us
