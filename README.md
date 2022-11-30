@@ -59,7 +59,7 @@ There is a sample in the source code to add a new mimetype and then use it to de
 
 - [A sample to use in .net core ](https://twentydevs.com/file-validation-net)
 
-- [A sample to use in .net core with FluentValidation](https://twentydevs.com/file-validation-net/)
+- [A sample to use in .net core with FluentValidation](https://twentydevs.com/file-validation-fluentvalidation/)
 
 
 
