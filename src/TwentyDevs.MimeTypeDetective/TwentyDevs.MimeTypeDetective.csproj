@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net451</TargetFrameworks>
-    <AssemblyVersion>1.2.62.0</AssemblyVersion>
-    <FileVersion>1.2.62.0</FileVersion>
+    <AssemblyVersion>1.10.70.0</AssemblyVersion>
+    <FileVersion>1.10.70.0</FileVersion>
 
 	  <Title>MimetypeDetective</Title>
 		  <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -11,7 +11,7 @@
 	 <Copyright>Copyright © SoranRad.com</Copyright>
 	 <Description>A simple library to detect mimetype of a file, stream or buffer array via magic numbers in the header content. It contains over 480 samples that as hardcoded in the library.
 Detect mimetype of an extension string or mimetype string like “rar”, “exe”,” image/gif” …. It is possible to add more mimetypes in the library to detect files related to them. In fact, this library finds the mimetype via magic numbers.</Description>
-	 <PackageProjectUrl>https://SoranRad.com/mime-type-detective/</PackageProjectUrl>
+	 <PackageProjectUrl>https://soranrad.com/find-mimetype/</PackageProjectUrl>
 	 <PackageIcon>Logo.png</PackageIcon>
 	 <PackageReadmeFile>README.md</PackageReadmeFile>
 	 <RepositoryUrl>https://github.com/SoranRad/MimetypeDetective</RepositoryUrl>
