@@ -1,7 +1,7 @@
 # MimetypeDetective
 
 
-[![Build&Test](https://github.com/20Devs/MimetypeDetective/actions/workflows/ci.yml/badge.svg)](https://github.com/20Devs/MimetypeDetective/actions/workflows/ci.yml)
+[![Build&Test](https://github.com/SoranRad/MimetypeDetective/actions/workflows/ci.yml/badge.svg)](https://github.com/SoranRad/MimetypeDetective/actions/workflows/ci.yml)
 [![NuGet Badge](https://buildstats.info/nuget/TwentyDevs.MimeTypeDetective)](https://www.nuget.org/packages/TwentyDevs.MimeTypeDetective/)
 
 A simple library to detect mimetype of a file, stream or buffer array via magic numbers in the header content. It contains over 480 samples that as hardcoded in the library.
@@ -55,11 +55,11 @@ There is a sample in the source code to add a new mimetype and then use it to de
 
 ### Using To File Validation 
 
-- [Complete Guide ](https://twentydevs.com/find-mimetype/)
+- [Complete Guide ](https://SoranRad.com/find-mimetype/)
 
-- [A sample to use in .net core ](https://twentydevs.com/file-validation-net)
+- [A sample to use in .net core ](https://SoranRad.com/file-validation-net)
 
-- [A sample to use in .net core with FluentValidation](https://twentydevs.com/file-validation-fluentvalidation/)
+- [A sample to use in .net core with FluentValidation](https://SoranRad.com/file-validation-fluentvalidation/)
 
 
 

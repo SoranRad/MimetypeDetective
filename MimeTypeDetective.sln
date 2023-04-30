@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{C7AAA008-7C71-4278-9D03-A35FE5E14BF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimeTypeDetective.Test", "Test\MimeTypeDetective.Test\MimeTypeDetective.Test.csproj", "{FF5A0272-3963-4832-BB5A-B1EF24F83109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimeTypeDetective.Test", "Test\MimeTypeDetective.Test\MimeTypeDetective.Test.csproj", "{FF5A0272-3963-4832-BB5A-B1EF24F83109}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sample", "sample", "{D045B877-97B7-49F1-BD1A-D4735AB29C68}"
 EndProject
@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{742E9F8C-923
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TwentyDevs.MimeTypeDetective", "src\TwentyDevs.MimeTypeDetective\TwentyDevs.MimeTypeDetective.csproj", "{C211A0DD-F25A-45DC-AE9E-E7E4027F1D8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample1", "sample\Sample1\Sample1.csproj", "{A4C83BF4-6556-4578-9C10-88E8270E66E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample1", "sample\Sample1\Sample1.csproj", "{A4C83BF4-6556-4578-9C10-88E8270E66E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,5 +72,16 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CC6CD360-1EED-4F93-A3A3-5A508FEC8B35}
+	EndGlobalSection
+	GlobalSection(AutomaticVersions) = postSolution
+		UpdateAssemblyVersion = True
+		UpdateAssemblyFileVersion = True
+		UpdateAssemblyInfoVersion = True
+		AssemblyVersionSettings = None.IncrementWithResetOnIncrease.Increment.None
+		AssemblyFileVersionSettings = None.IncrementWithResetOnIncrease.Increment.None
+		AssemblyInfoVersionSettings = None.IncrementWithResetOnIncrease.Increment.None
+		UpdatePackageVersion = False
+		AssemblyInfoVersionType = SettingsVersion
+		InheritWinAppVersionFrom = None
 	EndGlobalSection
 EndGlobal
