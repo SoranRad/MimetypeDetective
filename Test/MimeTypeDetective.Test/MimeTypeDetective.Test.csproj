@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp6.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>1.1.37.0</AssemblyVersion>
+    <AssemblyVersion>1.1.38.0</AssemblyVersion>
 
-    <FileVersion>1.1.37.0</FileVersion>
+    <FileVersion>1.1.38.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

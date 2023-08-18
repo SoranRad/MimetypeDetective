@@ -46,7 +46,7 @@ namespace TwentyDevs.MimeTypeDetective
         public string Description { get; private set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MimeTypeInfo"/> class. 
+        /// Initializes a new instance of the <see cref="MimeTypeInfo"/> class.
         /// </summary>
         /// <param name="headerContent">Byte array of file header</param>
         /// <param name="headerOffset">Offset of the header file</param>
@@ -59,9 +59,9 @@ namespace TwentyDevs.MimeTypeDetective
         /// </param>
         public MimeTypeInfo
                 (
-                    byte?[] headerContent, 
-                    int     headerOffset, 
-                    string  extension, 
+                    byte?[] headerContent,
+                    int     headerOffset,
+                    string  extension,
                     string  mimeType,
                     string description,
                     bool mustBeDetectByExtension)
@@ -85,11 +85,11 @@ namespace TwentyDevs.MimeTypeDetective
         /// <param name="mustBeDetectByExtension">
         /// Determine this mimetype after header content must be detect by Extension comaparing.
         /// some mimetype like zip and office documents have the same header content.
-        /// </param> 
+        /// </param>
         public MimeTypeInfo
                 (
-                    byte?[] headerContent,  
-                    string  extension, 
+                    byte?[] headerContent,
+                    string  extension,
                     string  mimeType,
                     string description,
                     bool mustBeDetectByExtension)
@@ -112,9 +112,9 @@ namespace TwentyDevs.MimeTypeDetective
 
         public static string NormalizeMimeType(string mimetypeString)
         {
-            return RemoveSpace(mimetypeString).ToLower();
-           
+            return mimetypeString.Replace(" ", "").ToLower();
         }
+
         /// <summary>
         /// remove all space character in a string and make string to lowercase and add dot character
         /// to first of string
@@ -123,25 +123,11 @@ namespace TwentyDevs.MimeTypeDetective
         /// <returns>return Extension string with lowercase,dot at first and with no space</returns>
         public static string NormalizeExtension(string Extension)
         {
-            Extension = RemoveSpace(Extension).ToLower();
-
             if (!Extension.StartsWith("."))
                 Extension = "." + Extension;
-            return Extension;
+            return Extension.Replace(" ", "").ToLower();
         }
 
-        /// <summary>
-        /// remove all space character in the string 
-        /// </summary>
-        /// <param name="str">determine the string that contain space</param>
-        /// <returns></returns>
-        private static string RemoveSpace(string str)
-        {
-            while (str.Contains(" "))
-                str = str.Replace(" ", "");
-
-            return str;
-        }
         /// <summary>
         /// Determines whether the specified mimetype is equal to the current mimetype by the Extensions
         /// </summary>
@@ -153,7 +139,7 @@ namespace TwentyDevs.MimeTypeDetective
         }
 
         /// <summary>
-        /// Determines whether the specified mimetype is equal to the current mimetype by the mimetype string 
+        /// Determines whether the specified mimetype is equal to the current mimetype by the mimetype string
         /// </summary>
         /// <param name="other">specified mimetype for comparing</param>
         /// <returns>true if the specified mimetype string is equal to the current mimetype extntion ,otherwise, false.</returns>
@@ -164,7 +150,7 @@ namespace TwentyDevs.MimeTypeDetective
         }
 
         /// <summary>
-        /// Determines whether the specified mimetype is equal to the current mimetype by the header content 
+        /// Determines whether the specified mimetype is equal to the current mimetype by the header content
         /// </summary>
         /// <param name="other">specified mimetype for comparing</param>
         /// <returns>true if the specified mimetype header content is equal to the current mimetype header content ,otherwise, false.</returns>
@@ -174,26 +160,20 @@ namespace TwentyDevs.MimeTypeDetective
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj)
         {
             // not have same type
-            if (!(obj is MimeTypeInfo)) 
-                return false;
-
-            var other = obj as MimeTypeInfo;
-
-
-            if (other == null) 
+            if (!(obj is MimeTypeInfo other) )
                 return false;
 
             if (
                     string.CompareOrdinal(this.Extension, other.Extension) == 0
                 &&  string.CompareOrdinal(this.MimeType, other.MimeType) == 0
-                
+
             )
             {
                 // if both are null then they are equal
